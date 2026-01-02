@@ -12,7 +12,7 @@ class DataIngestion:
             collection_name = "flipkart_product_recommendation",
             api_endpoint = Config.ASTRA_DB_API_ENDPOINT,
             token = Config.ASTRA_DB_APPLICATION_TOKEN,
-            namespace = Config.ASTRADB_KEY_SPACE
+            namespace = Config.ASTRA_DB_KEY_SPACE
         )
     
     def ingest(self, load_existing=True):
