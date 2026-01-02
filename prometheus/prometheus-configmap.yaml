@@ -1,0 +1,21 @@
+apiVersion: app/v1
+kind: configMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+
+    scrape_cofigs:
+      - job-name: "prometheus"
+        static-configs:
+          - tragets: ['localhost:9090']
+      
+      - job-name: 'flask-app'
+        metrics_path: /metrics
+        static-configs:
+          # VM-IP address
+          - tragets: ['146.148.52.11:5000'] 
+
