@@ -17,4 +17,4 @@ RUN pip install --no-cache-dir .
 
 EXPOSE 5000
 
-RUN ["python", "app.py"]
+CMD ["python", "app.py"]
