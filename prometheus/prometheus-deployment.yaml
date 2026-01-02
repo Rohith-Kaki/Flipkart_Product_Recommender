@@ -1,4 +1,4 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prometheus
@@ -6,7 +6,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchlabels:
+    matchLabels:
       app: prometheus
   template:
     metadata:
@@ -16,14 +16,14 @@ spec:
       containers:
         - name: prometheus
           image: prom/prometheus
-          args: 
+          args:
             - "--config.file=/etc/prometheus/prometheus.yml"
           ports:
             - containerPort: 9090
           volumeMounts:
             - name: config-volume
               mountPath: /etc/prometheus
-      volume:
+      volumes:
         - name: config-volume
           configMap:
             name: prometheus-config
@@ -38,7 +38,7 @@ spec:
     app: prometheus
   ports:
     - protocol: TCP
-      prot: 9090
-      tragetPort: 9090
-      nodePort: 32001
+      port: 9090
+      targetPort: 9090
+      nodePort: 32001 
   type: NodePort
